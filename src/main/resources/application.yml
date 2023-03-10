@@ -1,0 +1,28 @@
+#keycloak:
+#  realm: spring-security-api
+#  auth-server-url: http://localhost:8083
+#  resource: spring-api
+#  public-client: true
+#  ssl-required: external
+
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: spring-api
+            client-secret: twOB7XjacGPqOqSZJodPnOZ4xFHN2K7t
+            authorization-grant-type: client_credentials
+            client-name: spring-api
+        provider:
+          keycloak:
+            authorization-uri: http://localhost:8082/realms/spring-security-api/protocol/openid-connect/auth
+            token-uri: http://localhost:8082/realms/spring-security-api/protocol/openid-connect/token
+            issuer-uri: http://localhost:8082/realms/spring-security-api
+            user-info-uri: http://localhost:8082/realms/spring-security-api/protocol/openid-connect/userinfo
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8082/realms/spring-security-api
+  main:
+    banner-mode: off
